@@ -1,19 +1,15 @@
 /* ═══════════════════════════════════════════════════
-   ARCO — main.js
-   Navigation · Tab switching · Simulated results
+   ARCO — main.js  v3
 ═══════════════════════════════════════════════════ */
-
 'use strict';
 
 /* ── Nav scroll shadow ── */
-const siteNav = document.querySelector('.site-nav');
-if (siteNav) {
-  window.addEventListener('scroll', () => {
-    siteNav.classList.toggle('scrolled', window.scrollY > 8);
-  }, { passive: true });
-}
+const siteNavs = document.querySelectorAll('.site-nav');
+window.addEventListener('scroll', () => {
+  siteNavs.forEach(n => n.classList.toggle('scrolled', window.scrollY > 8));
+}, { passive: true });
 
-/* ── Mobile burger menu ── */
+/* ── Mobile burger ── */
 const burger = document.getElementById('nav-burger');
 const mobileMenu = document.getElementById('nav-mobile');
 if (burger && mobileMenu) {
@@ -23,250 +19,157 @@ if (burger && mobileMenu) {
     document.body.style.overflow = open ? 'hidden' : '';
   });
 }
-
-function closeMobileMenu() {
-  if (burger) burger.classList.remove('open');
-  if (mobileMenu) mobileMenu.classList.remove('open');
+function closeMobile() {
+  burger?.classList.remove('open');
+  mobileMenu?.classList.remove('open');
   document.body.style.overflow = '';
 }
 
 /* ── Page routing ── */
-const PAGES = ['home', 'publications', 'tutorials', 'about'];
+const PAGES = ['home','publications','tutorials','about'];
 
 function showPage(name) {
-  // Hide all, show target
   PAGES.forEach(p => {
-    const el = document.getElementById('page-' + p);
-    if (el) el.classList.toggle('active', p === name);
+    document.getElementById('page-' + p)?.classList.toggle('active', p === name);
   });
-
-  // Sync nav active states across all navs
-  document.querySelectorAll('[data-page]').forEach(link => {
-    link.classList.toggle('active', link.dataset.page === name);
+  document.querySelectorAll('[data-page]').forEach(el => {
+    el.classList.toggle('active', el.dataset.page === name);
   });
-
-  closeMobileMenu();
+  closeMobile();
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
-// Wire all nav links
-document.querySelectorAll('[data-page]').forEach(link => {
-  link.addEventListener('click', () => showPage(link.dataset.page));
+document.querySelectorAll('[data-page]').forEach(el => {
+  el.addEventListener('click', () => showPage(el.dataset.page));
 });
 
 /* ── Tab switching ── */
 function switchTab(tab) {
   const isIR = tab === 'ir';
-
-  const btnIR   = document.getElementById('tab-ir');
-  const btnFrag = document.getElementById('tab-frag');
-  const panelIR   = document.getElementById('panel-ir');
-  const panelFrag = document.getElementById('panel-frag');
-
-  if (btnIR)   btnIR.className   = 'tab-btn' + (isIR  ? ' active-ir'   : '');
-  if (btnFrag) btnFrag.className = 'tab-btn' + (!isIR ? ' active-frag' : '');
-  if (panelIR)   panelIR.classList.toggle('active', isIR);
-  if (panelFrag) panelFrag.classList.toggle('active', !isIR);
+  document.getElementById('tab-ir').className   = 'tab-btn' + (isIR  ? ' active-ir'   : '');
+  document.getElementById('tab-frag').className = 'tab-btn' + (!isIR ? ' active-frag' : '');
+  document.getElementById('panel-ir').classList.toggle('active', isIR);
+  document.getElementById('panel-frag').classList.toggle('active', !isIR);
 }
-
-document.getElementById('tab-ir')?.addEventListener('click', () => switchTab('ir'));
+document.getElementById('tab-ir')?.addEventListener('click',   () => switchTab('ir'));
 document.getElementById('tab-frag')?.addEventListener('click', () => switchTab('frag'));
 
-/* ══════════════════════════════════════════════
-   MOLECULE SVG RENDERER
-   Draws a simple skeletal structure placeholder
-══════════════════════════════════════════════ */
-function makeMolSVG(seed, accentColor) {
-  const W = 90, H = 78;
-  const cx = W / 2, cy = H / 2;
-  const R  = 26;
-
-  // Hexagon vertices (benzene-like ring)
-  const hex = Array.from({ length: 6 }, (_, i) => {
-    const a = (Math.PI / 3) * i - Math.PI / 6;
-    return { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) };
-  });
-
-  const hexPath = hex.map((p, i) => `${i ? 'L' : 'M'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ') + ' Z';
-
-  // Alternating double-bond ticks (inner ring)
-  const innerR = R * 0.62;
-  const innerHex = Array.from({ length: 6 }, (_, i) => {
-    const a = (Math.PI / 3) * i - Math.PI / 6;
-    return { x: cx + innerR * Math.cos(a), y: cy + innerR * Math.sin(a) };
-  });
-
-  let doubleBonds = '';
-  for (let i = 0; i < 6; i += 2) {
-    const a = innerHex[i], b = innerHex[(i + 1) % 6];
-    doubleBonds += `<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" stroke="${accentColor}" stroke-width=".9" opacity=".55"/>`;
+/* ── Molecule SVG ── */
+function molSVG(seed, color) {
+  const cx = 50, cy = 43, R = 28, r = R * .62;
+  const hex  = Array.from({length:6}, (_,i) => ({ x: cx + R*Math.cos(Math.PI/3*i - Math.PI/6), y: cy + R*Math.sin(Math.PI/3*i - Math.PI/6) }));
+  const hexI = Array.from({length:6}, (_,i) => ({ x: cx + r*Math.cos(Math.PI/3*i - Math.PI/6), y: cy + r*Math.sin(Math.PI/3*i - Math.PI/6) }));
+  const path = hex.map((p,i) => `${i?'L':'M'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ') + 'Z';
+  let dbl = '';
+  for (let i=0;i<6;i+=2) {
+    dbl += `<line x1="${hexI[i].x.toFixed(1)}" y1="${hexI[i].y.toFixed(1)}" x2="${hexI[(i+1)%6].x.toFixed(1)}" y2="${hexI[(i+1)%6].y.toFixed(1)}" stroke="${color}" stroke-width=".9" opacity=".5"/>`;
   }
-
-  // Substituent based on seed
-  const substituents = [
-    /* OH */  `<line x1="${hex[0].x.toFixed(1)}" y1="${hex[0].y.toFixed(1)}" x2="${(hex[0].x + 14).toFixed(1)}" y2="${(hex[0].y - 12).toFixed(1)}" stroke="#8090a0" stroke-width="1.1"/><text x="${(hex[0].x + 15).toFixed(1)}" y="${(hex[0].y - 13).toFixed(1)}" font-size="7" fill="#8090a0" font-family="DM Mono, monospace">OH</text>`,
-    /* C=O */ `<line x1="${hex[2].x.toFixed(1)}" y1="${hex[2].y.toFixed(1)}" x2="${(hex[2].x + 16).toFixed(1)}" y2="${(hex[2].y + 4).toFixed(1)}" stroke="#8090a0" stroke-width="1.1"/><text x="${(hex[2].x + 18).toFixed(1)}" y="${(hex[2].y + 7).toFixed(1)}" font-size="7" fill="#8090a0" font-family="DM Mono, monospace">CHO</text>`,
-    /* NH2 */ `<line x1="${hex[4].x.toFixed(1)}" y1="${hex[4].y.toFixed(1)}" x2="${(hex[4].x - 15).toFixed(1)}" y2="${(hex[4].y + 10).toFixed(1)}" stroke="#8090a0" stroke-width="1.1"/><text x="${(hex[4].x - 22).toFixed(1)}" y="${(hex[4].y + 18).toFixed(1)}" font-size="7" fill="#8090a0" font-family="DM Mono, monospace">NH₂</text>`,
+  const subs = [
+    `<line x1="${hex[0].x.toFixed(1)}" y1="${hex[0].y.toFixed(1)}" x2="${(hex[0].x+15).toFixed(1)}" y2="${(hex[0].y-13).toFixed(1)}" stroke="#96a8b8" stroke-width="1.1"/><text x="${(hex[0].x+16).toFixed(1)}" y="${(hex[0].y-13).toFixed(1)}" font-size="7.5" fill="#96a8b8" font-family="DM Mono,monospace">OH</text>`,
+    `<line x1="${hex[2].x.toFixed(1)}" y1="${hex[2].y.toFixed(1)}" x2="${(hex[2].x+17).toFixed(1)}" y2="${(hex[2].y+5).toFixed(1)}" stroke="#96a8b8" stroke-width="1.1"/><text x="${(hex[2].x+19).toFixed(1)}" y="${(hex[2].y+8).toFixed(1)}" font-size="7.5" fill="#96a8b8" font-family="DM Mono,monospace">CHO</text>`,
+    `<line x1="${hex[4].x.toFixed(1)}" y1="${hex[4].y.toFixed(1)}" x2="${(hex[4].x-15).toFixed(1)}" y2="${(hex[4].y+11).toFixed(1)}" stroke="#96a8b8" stroke-width="1.1"/><text x="${(hex[4].x-24).toFixed(1)}" y="${(hex[4].y+19).toFixed(1)}" font-size="7.5" fill="#96a8b8" font-family="DM Mono,monospace">NH₂</text>`,
   ];
-
-  return `<svg viewBox="0 0 ${W} ${H}" class="card-mol" xmlns="http://www.w3.org/2000/svg">
-    <path d="${hexPath}" fill="none" stroke="${accentColor}" stroke-width="1.5" stroke-linejoin="round"/>
-    ${doubleBonds}
-    ${substituents[seed % substituents.length]}
+  return `<svg viewBox="0 0 100 86" class="card-mol" xmlns="http://www.w3.org/2000/svg">
+    <path d="${path}" fill="none" stroke="${color}" stroke-width="1.6" stroke-linejoin="round"/>
+    ${dbl}${subs[seed % subs.length]}
   </svg>`;
 }
 
-/* ══════════════════════════════════════════════
-   ELUCIDATION (ARCO IR)
-══════════════════════════════════════════════ */
+/* ── Elucidation ── */
 function runElucidation() {
-  const peaks   = document.getElementById('ir-peaks')?.value.trim();
   const formula = document.getElementById('ir-formula')?.value.trim();
   const model   = document.getElementById('ir-model')?.value;
   const resultsEl = document.getElementById('ir-results');
   if (!resultsEl) return;
+  if (!formula) { shakeField('ir-formula'); return; }
 
-  if (!formula) {
-    shakeField('ir-formula');
-    return;
-  }
-
-  resultsEl.innerHTML = `<div class="spinner-wrap"><div class="spinner" style="--spin-color:var(--rose)"></div></div>`;
-
+  resultsEl.innerHTML = `<div class="spinner-wrap"><div class="spinner" style="--spin-c:var(--rose)"></div></div>`;
   const candidates = [
-    { name: 'Phenol',         smiles: 'c1ccccc1O',      score: '0.94', rank: 1 },
-    { name: 'Benzaldehyde',   smiles: 'O=Cc1ccccc1',    score: '0.76', rank: 2 },
-    { name: 'Cyclohexanone',  smiles: 'O=C1CCCCC1',     score: '0.61', rank: 3 },
+    { name:'Phenol',        smiles:'c1ccccc1O',   score:'0.94' },
+    { name:'Benzaldehyde',  smiles:'O=Cc1ccccc1', score:'0.76' },
+    { name:'Cyclohexanone', smiles:'O=C1CCCCC1',  score:'0.61' },
   ];
-
-  const modelLabel = model
-    ? `· <strong>${{ rf:'Random Forest', cnn:'CNN Spectral', transformer:'Transformer' }[model] || model}</strong>`
-    : '';
-
+  const modelLabel = model ? `· <strong>${{rf:'Random Forest',cnn:'CNN Spectral',transformer:'Transformer'}[model]||model}</strong>` : '';
   setTimeout(() => {
     resultsEl.innerHTML = `
-      <p class="results-label">
-        Top candidates for <strong>${escHtml(formula)}</strong>
-        ${modelLabel}
-        ${peaks ? `· IR peaks detected` : ''}
-      </p>
+      <p class="results-label">Top candidates for <strong>${esc(formula)}</strong> ${modelLabel}</p>
       <div class="result-grid">
-        ${candidates.map((c, i) => `
-          <div class="result-card" style="--card-accent:var(--rose-light);" title="Click to copy SMILES">
-            ${makeMolSVG(i, '#993366')}
+        ${candidates.map((c,i) => `
+          <div class="result-card" style="--card-hover:var(--rose-light)" title="Click to copy SMILES">
+            ${molSVG(i,'#7d2455')}
             <div class="card-name">${c.name}</div>
             <div class="card-smiles">${c.smiles}</div>
             <span class="card-score score-rose">Score ${c.score}</span>
-          </div>
-        `).join('')}
-      </div>
-    `;
-    // Copy SMILES on click
-    resultsEl.querySelectorAll('.result-card').forEach((card, i) => {
-      card.addEventListener('click', () => copyToClipboard(candidates[i].smiles, card));
+          </div>`).join('')}
+      </div>`;
+    resultsEl.querySelectorAll('.result-card').forEach((card,i) => {
+      card.addEventListener('click', () => copySmiles(candidates[i].smiles, card));
     });
   }, 1500);
 }
 
-/* ══════════════════════════════════════════════
-   GENERATION (ARCO Fragments)
-══════════════════════════════════════════════ */
+/* ── Generation ── */
 function runGeneration() {
   const formula = document.getElementById('frag-formula')?.value.trim();
   const frag    = document.getElementById('frag-select')?.value;
-  const groups  = document.getElementById('frag-groups')?.value.trim();
   const resultsEl = document.getElementById('frag-results');
   if (!resultsEl) return;
+  if (!formula) { shakeField('frag-formula'); return; }
 
-  if (!formula) {
-    shakeField('frag-formula');
-    return;
-  }
-
-  resultsEl.innerHTML = `<div class="spinner-wrap"><div class="spinner" style="--spin-color:var(--steel)"></div></div>`;
-
+  resultsEl.innerHTML = `<div class="spinner-wrap"><div class="spinner" style="--spin-c:var(--steel)"></div></div>`;
   const candidates = [
-    { name: 'Benzyl alcohol', smiles: 'OCc1ccccc1',   score: '0.88' },
-    { name: 'Anisole',        smiles: 'COc1ccccc1',   score: '0.72' },
-    { name: '2-Methylphenol', smiles: 'Cc1ccccc1O',   score: '0.65' },
+    { name:'Benzyl alcohol', smiles:'OCc1ccccc1',  score:'0.88' },
+    { name:'Anisole',        smiles:'COc1ccccc1',  score:'0.72' },
+    { name:'2-Methylphenol', smiles:'Cc1ccccc1O',  score:'0.65' },
   ];
-
   setTimeout(() => {
     resultsEl.innerHTML = `
-      <p class="results-label">
-        Generated structures for <strong>${escHtml(formula)}</strong>
-        ${frag ? `· Fragment: <strong>${escHtml(frag)}</strong>` : ''}
-        ${groups ? `· Groups: <strong>${escHtml(groups)}</strong>` : ''}
-      </p>
+      <p class="results-label">Generated structures for <strong>${esc(formula)}</strong>${frag?` · Fragment: <strong>${esc(frag)}</strong>`:''}</p>
       <div class="result-grid">
-        ${candidates.map((c, i) => `
-          <div class="result-card" style="--card-accent:var(--steel-light);" title="Click to copy SMILES">
-            ${makeMolSVG(i + 3, '#467886')}
+        ${candidates.map((c,i) => `
+          <div class="result-card" style="--card-hover:var(--steel-light)" title="Click to copy SMILES">
+            ${molSVG(i+3,'#2d6070')}
             <div class="card-name">${c.name}</div>
             <div class="card-smiles">${c.smiles}</div>
             <span class="card-score score-steel">Score ${c.score}</span>
-          </div>
-        `).join('')}
-      </div>
-    `;
-    resultsEl.querySelectorAll('.result-card').forEach((card, i) => {
-      card.addEventListener('click', () => copyToClipboard(candidates[i].smiles, card));
+          </div>`).join('')}
+      </div>`;
+    resultsEl.querySelectorAll('.result-card').forEach((card,i) => {
+      card.addEventListener('click', () => copySmiles(candidates[i].smiles, card));
     });
   }, 1300);
 }
 
 /* ── Helpers ── */
+function esc(s) {
+  return s.replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
 function shakeField(id) {
   const el = document.getElementById(id);
   if (!el) return;
   el.style.borderColor = 'var(--rose)';
-  el.style.animation = 'none';
-  requestAnimationFrame(() => {
-    el.style.animation = 'shake .35s var(--ease)';
-  });
+  el.animate([{transform:'translateX(0)'},{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'translateX(0)'}],{duration:360,easing:'ease'});
   el.focus();
-  el.addEventListener('animationend', () => {
-    el.style.animation = '';
-    el.style.borderColor = '';
-  }, { once: true });
+  setTimeout(() => { el.style.borderColor = ''; }, 800);
 }
-
-function escHtml(str) {
-  return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-
-function copyToClipboard(text, card) {
+function copySmiles(text, card) {
   navigator.clipboard?.writeText(text).then(() => {
-    const orig = card.querySelector('.card-smiles').textContent;
-    card.querySelector('.card-smiles').textContent = '✓ Copied!';
-    setTimeout(() => {
-      card.querySelector('.card-smiles').textContent = orig;
-    }, 1600);
+    const el = card.querySelector('.card-smiles');
+    const orig = el.textContent;
+    el.textContent = '✓ Copied!';
+    setTimeout(() => { el.textContent = orig; }, 1600);
   });
 }
 
-// Add shake keyframe to document
-const style = document.createElement('style');
-style.textContent = `@keyframes shake {
-  0%,100%{transform:translateX(0)}
-  20%{transform:translateX(-5px)}
-  40%{transform:translateX(5px)}
-  60%{transform:translateX(-4px)}
-  80%{transform:translateX(4px)}
-}`;
-document.head.appendChild(style);
-
-/* ── Enter key on inputs ── */
+/* ── Enter key shortcut ── */
 document.addEventListener('keydown', e => {
   if (e.key !== 'Enter') return;
-  const active = document.querySelector('#panel-ir.active');
-  const activeFrag = document.querySelector('#panel-frag.active');
-  if (active && active.contains(e.target)) runElucidation();
-  if (activeFrag && activeFrag.contains(e.target)) runGeneration();
+  if (document.querySelector('#panel-ir.active')?.contains(e.target))   runElucidation();
+  if (document.querySelector('#panel-frag.active')?.contains(e.target)) runGeneration();
 });
 
-/* ── Expose globals for inline event use ── */
-window.showPage     = showPage;
-window.switchTab    = switchTab;
+/* ── Globals ── */
+window.showPage = showPage;
+window.switchTab = switchTab;
 window.runElucidation = runElucidation;
-window.runGeneration  = runGeneration;
+window.runGeneration = runGeneration;
