@@ -9,35 +9,31 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════
-     MOBILE MENU  (overlay, outside page wrappers)
-═══════════════════════════════════════════════ -->
+<!-- Mobile overlay menu -->
 <div class="nav-mobile" id="nav-mobile">
   <a data-page="home">Home</a>
   <a data-page="publications">Publications</a>
   <a data-page="tutorials">Tutorials</a>
-  <a href="https://github.com" target="_blank" rel="noopener">Github</a>
+  <a href="https://github.com/GabrielaVidales/ARCO" target="_blank" rel="noopener">Github</a>
   <a data-page="about">About us</a>
 </div>
 
-
-<!-- ═══════════════════════════════════════════════
-     PAGE: HOME
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     HOME
+═══════════════════════════════════════ -->
 <div class="page active" id="page-home">
 
-  <!-- NAV -->
   <nav class="site-nav">
     <div class="nav-logo" data-page="home">
-      <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="16,2 30,9 30,23 16,30 2,23 2,9" stroke="#0e2841" stroke-width="1.6" fill="none"/>
-        <polygon points="16,8 24,12.5 24,19.5 16,24 8,19.5 8,12.5" stroke="#993366" stroke-width="1.2" fill="none"/>
-        <circle cx="16" cy="2"  r="2" fill="#993366"/>
-        <circle cx="30" cy="9"  r="2" fill="#993366"/>
-        <circle cx="30" cy="23" r="2" fill="#467886"/>
-        <circle cx="16" cy="30" r="2" fill="#467886"/>
-        <circle cx="2"  cy="23" r="2" fill="#467886"/>
-        <circle cx="2"  cy="9"  r="2" fill="#993366"/>
+      <svg class="nav-logo-icon" viewBox="0 0 30 30" fill="none">
+        <polygon points="15,2 28,8.5 28,21.5 15,28 2,21.5 2,8.5" stroke="#0a1f33" stroke-width="1.5" fill="none"/>
+        <polygon points="15,7.5 22,11.5 22,18.5 15,22.5 8,18.5 8,11.5" stroke="#7d2455" stroke-width="1.1" fill="none"/>
+        <circle cx="15" cy="2"  r="1.8" fill="#7d2455"/>
+        <circle cx="28" cy="8.5"  r="1.8" fill="#7d2455"/>
+        <circle cx="28" cy="21.5" r="1.8" fill="#2d6070"/>
+        <circle cx="15" cy="28"   r="1.8" fill="#2d6070"/>
+        <circle cx="2"  cy="21.5" r="1.8" fill="#2d6070"/>
+        <circle cx="2"  cy="8.5"  r="1.8" fill="#7d2455"/>
       </svg>
       <span class="nav-logo-text">A R C O</span>
     </div>
@@ -45,7 +41,7 @@
       <li><a class="active" data-page="home">Home</a></li>
       <li><a data-page="publications">Publications</a></li>
       <li><a data-page="tutorials">Tutorials</a></li>
-      <li><a href="https://github.com" target="_blank" rel="noopener">Github</a></li>
+      <li><a href="https://github.com/GabrielaVidales/ARCO" target="_blank" rel="noopener">Github</a></li>
       <li><a data-page="about">About us</a></li>
     </ul>
     <button class="nav-burger" id="nav-burger" aria-label="Menu">
@@ -53,162 +49,148 @@
     </button>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO — centered -->
   <div class="hero">
-    <div class="hero-eyebrow">CASE Framework · 2026</div>
     <div class="hero-lockup">
-      <svg class="hero-icon" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="29,3 54,16.5 54,41.5 29,55 4,41.5 4,16.5" stroke="#0e2841" stroke-width="2" fill="none"/>
-        <polygon points="29,12 44,20.5 44,37.5 29,46 14,37.5 14,20.5" stroke="#993366" stroke-width="1.4" fill="none"/>
-        <circle cx="29" cy="3"  r="2.5" fill="#993366"/>
-        <circle cx="54" cy="16.5" r="2.5" fill="#993366"/>
-        <circle cx="54" cy="41.5" r="2.5" fill="#467886"/>
-        <circle cx="29" cy="55"   r="2.5" fill="#467886"/>
-        <circle cx="4"  cy="41.5" r="2.5" fill="#467886"/>
-        <circle cx="4"  cy="16.5" r="2.5" fill="#993366"/>
-        <circle cx="29" cy="29"   r="4" fill="none" stroke="#993366" stroke-width="1" opacity=".5"/>
+      <svg class="hero-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="32,3 58,17 58,47 32,61 6,47 6,17" stroke="#0a1f33" stroke-width="2" fill="none"/>
+        <polygon points="32,13 48,22 48,42 32,51 16,42 16,22" stroke="#7d2455" stroke-width="1.5" fill="none"/>
+        <circle cx="32" cy="3"  r="2.8" fill="#7d2455"/>
+        <circle cx="58" cy="17" r="2.8" fill="#7d2455"/>
+        <circle cx="58" cy="47" r="2.8" fill="#2d6070"/>
+        <circle cx="32" cy="61" r="2.8" fill="#2d6070"/>
+        <circle cx="6"  cy="47" r="2.8" fill="#2d6070"/>
+        <circle cx="6"  cy="17" r="2.8" fill="#7d2455"/>
+        <circle cx="32" cy="32" r="5" fill="none" stroke="#7d2455" stroke-width="1" opacity=".4"/>
+        <circle cx="32" cy="32" r="1.8" fill="#7d2455" opacity=".5"/>
       </svg>
       <h1 class="hero-title">A R C O</h1>
     </div>
+
     <p class="hero-desc">
       ARCO (Algorithms for Recognition of Chemical Objects) is a Computer-Assisted Structure
       Elucidation (CASE) framework that integrates machine learning and rule-based chemical
       constraints to generate and rank plausible molecular structures from infrared (IR) spectral
       data and molecular formula information.
     </p>
+
     <p class="hero-authors">
       <strong>Daniel Villanueva</strong><sup>[1]</sup>,
       <strong>Luis Armando González-Ortiz</strong><sup>[1]</sup>,
       <strong>Lisset Noriega</strong><sup>[1]</sup> and
-      <strong>Gabriel Merino</strong><sup>[1]</sup><br/>
-      <span style="font-size:.72rem;">[1] Departamento de Física Aplicada, Centro de Estudios Avanzados, Unidad Mérida</span>
+      <strong>Gabriel Merino</strong><sup>[1]</sup>
+      <span class="hero-institution">[1] Departamento de Física Aplicada, Centro de Estudios Avanzados (Cinvestav), Unidad Mérida</span>
     </p>
   </div>
 
   <!-- TOOL CARD -->
-  <div class="tool-card" style="margin-left:var(--side-pad); margin-right:var(--side-pad);">
+  <div class="tool-wrap">
+    <div class="tool-card">
+      <div class="tab-bar">
+        <button class="tab-btn active-ir" id="tab-ir">
+          <span class="tab-dot"></span>A R C O &nbsp; I R
+        </button>
+        <button class="tab-btn" id="tab-frag">
+          <span class="tab-dot"></span>A R C O &nbsp; F R A G M E N T S
+        </button>
+      </div>
 
-    <!-- Tab bar -->
-    <div class="tab-bar">
-      <button class="tab-btn active-ir" id="tab-ir">
-        <span class="tab-dot"></span>
-        A R C O &nbsp; I R
-      </button>
-      <button class="tab-btn" id="tab-frag">
-        <span class="tab-dot"></span>
-        A R C O &nbsp; F R A G M E N T S
-      </button>
-    </div>
-
-    <!-- Panel: IR -->
-    <div class="tool-panel active" id="panel-ir">
-      <div class="input-grid">
-        <div class="input-group">
-          <label class="input-label" for="ir-peaks">IR Peaks &nbsp;(wavenumber, intensity)</label>
-          <input class="input-field" id="ir-peaks" type="text"
-            placeholder="e.g. (2900, 0.5), (1700, 0.2), (650, 0.7)" />
+      <!-- Panel IR -->
+      <div class="tool-panel active" id="panel-ir">
+        <div class="input-grid">
+          <div class="input-group">
+            <label class="input-label" for="ir-peaks">IR Peaks &nbsp;(wavenumber, intensity)</label>
+            <input class="input-field" id="ir-peaks" type="text"
+              placeholder="e.g. (2900, 0.5), (1700, 0.2), (650, 0.7)" />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="ir-formula">Molecular Formula</label>
+            <input class="input-field" id="ir-formula" type="text" placeholder="e.g. C6H6O" />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="ir-model">Machine Learning Model</label>
+            <select class="input-field" id="ir-model">
+              <option value="">Select a model…</option>
+              <option value="rf">Random Forest</option>
+              <option value="cnn">CNN Spectral</option>
+              <option value="transformer">Transformer</option>
+            </select>
+          </div>
         </div>
-        <div class="input-group">
-          <label class="input-label" for="ir-formula">Molecular Formula</label>
-          <input class="input-field" id="ir-formula" type="text"
-            placeholder="e.g. C6H6O" />
-        </div>
-        <div class="input-group">
-          <label class="input-label" for="ir-model">Machine Learning Model</label>
-          <select class="input-field" id="ir-model">
-            <option value="">Select a model…</option>
-            <option value="rf">Random Forest</option>
-            <option value="cnn">CNN Spectral</option>
-            <option value="transformer">Transformer</option>
-          </select>
+        <button class="action-btn btn-ir" onclick="runElucidation()">
+          <span class="btn-icon">⚗</span>E L U C I D A T E
+        </button>
+        <div class="results-area" id="ir-results">
+          <div class="results-empty">
+            <span class="results-empty-icon">🔬</span>
+            <span class="results-empty-text">Enter IR peaks and a molecular formula to begin elucidation</span>
+          </div>
         </div>
       </div>
 
-      <button class="action-btn btn-ir" onclick="runElucidation()">
-        <span class="btn-icon">⚗</span>
-        E L U C I D A T E
-      </button>
-
-      <div class="results-area" id="ir-results">
-        <div class="results-empty">
-          <span class="results-empty-icon">🔬</span>
-          <span class="results-empty-text">Enter IR peaks and a molecular formula to begin elucidation</span>
+      <!-- Panel Fragments -->
+      <div class="tool-panel" id="panel-frag">
+        <div class="input-grid">
+          <div class="input-group">
+            <label class="input-label" for="frag-groups">Functional Group Fragments</label>
+            <input class="input-field" id="frag-groups" type="text"
+              placeholder="Aromatic, alcohol, carbonyl, …" />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="frag-formula">Molecular Formula</label>
+            <input class="input-field" id="frag-formula" type="text" placeholder="e.g. C6H6O" />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="frag-select">Fragment</label>
+            <select class="input-field" id="frag-select">
+              <option value="">Select a fragment…</option>
+              <option value="aromatic">Aromatic ring</option>
+              <option value="alcohol">Alcohol (–OH)</option>
+              <option value="carbonyl">Carbonyl (C=O)</option>
+              <option value="amine">Amine (–NH₂)</option>
+              <option value="alkene">Alkene (C=C)</option>
+            </select>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Panel: Fragments -->
-    <div class="tool-panel" id="panel-frag">
-      <div class="input-grid">
-        <div class="input-group">
-          <label class="input-label" for="frag-groups">Functional Group Fragments</label>
-          <input class="input-field" id="frag-groups" type="text"
-            placeholder="Aromatic, alcohol, carbonyl, …" />
-        </div>
-        <div class="input-group">
-          <label class="input-label" for="frag-formula">Molecular Formula</label>
-          <input class="input-field" id="frag-formula" type="text"
-            placeholder="e.g. C6H6O" />
-        </div>
-        <div class="input-group">
-          <label class="input-label" for="frag-select">Fragment</label>
-          <select class="input-field" id="frag-select">
-            <option value="">Select a fragment…</option>
-            <option value="aromatic">Aromatic ring</option>
-            <option value="alcohol">Alcohol (–OH)</option>
-            <option value="carbonyl">Carbonyl (C=O)</option>
-            <option value="amine">Amine (–NH₂)</option>
-            <option value="alkene">Alkene (C=C)</option>
-          </select>
-        </div>
-      </div>
-
-      <button class="action-btn btn-frag" onclick="runGeneration()">
-        <span class="btn-icon">🧩</span>
-        G E N E R A T E
-      </button>
-
-      <div class="results-area" id="frag-results">
-        <div class="results-empty">
-          <span class="results-empty-icon">🧪</span>
-          <span class="results-empty-text">Select fragments and enter a molecular formula to generate candidates</span>
+        <button class="action-btn btn-frag" onclick="runGeneration()">
+          <span class="btn-icon">🧩</span>G E N E R A T E
+        </button>
+        <div class="results-area" id="frag-results">
+          <div class="results-empty">
+            <span class="results-empty-icon">🧪</span>
+            <span class="results-empty-text">Select fragments and enter a molecular formula to generate candidates</span>
+          </div>
         </div>
       </div>
     </div>
-
-  </div><!-- /.tool-card -->
+  </div>
 
   <footer class="site-footer">
     <div class="footer-brand">
       <svg viewBox="0 0 18 18" fill="none">
-        <polygon points="9,1 17,5 17,13 9,17 1,13 1,5" stroke="#0e2841" stroke-width="1.2" fill="none"/>
-        <polygon points="9,5 13,7 13,11 9,13 5,11 5,7" stroke="#993366" stroke-width=".8" fill="none"/>
+        <polygon points="9,1 17,5 17,13 9,17 1,13 1,5" stroke="#0a1f33" stroke-width="1.2" fill="none"/>
+        <polygon points="9,5 13,7 13,11 9,13 5,11 5,7" stroke="#7d2455" stroke-width=".8" fill="none"/>
       </svg>
       A R C O
     </div>
     <span>© Copyright 2026</span>
     <span>Web design by Gabriela Vidales and Daniel Villanueva</span>
   </footer>
+</div>
 
-</div><!-- /#page-home -->
 
-
-<!-- ═══════════════════════════════════════════════
-     PAGE: PUBLICATIONS
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     PUBLICATIONS
+═══════════════════════════════════════ -->
 <div class="page" id="page-publications">
-
   <nav class="site-nav">
     <div class="nav-logo" data-page="home">
-      <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none">
-        <polygon points="16,2 30,9 30,23 16,30 2,23 2,9" stroke="#0e2841" stroke-width="1.6" fill="none"/>
-        <polygon points="16,8 24,12.5 24,19.5 16,24 8,19.5 8,12.5" stroke="#993366" stroke-width="1.2" fill="none"/>
-        <circle cx="16" cy="2"  r="2" fill="#993366"/>
-        <circle cx="30" cy="9"  r="2" fill="#993366"/>
-        <circle cx="30" cy="23" r="2" fill="#467886"/>
-        <circle cx="16" cy="30" r="2" fill="#467886"/>
-        <circle cx="2"  cy="23" r="2" fill="#467886"/>
-        <circle cx="2"  cy="9"  r="2" fill="#993366"/>
+      <svg class="nav-logo-icon" viewBox="0 0 30 30" fill="none">
+        <polygon points="15,2 28,8.5 28,21.5 15,28 2,21.5 2,8.5" stroke="#0a1f33" stroke-width="1.5" fill="none"/>
+        <polygon points="15,7.5 22,11.5 22,18.5 15,22.5 8,18.5 8,11.5" stroke="#7d2455" stroke-width="1.1" fill="none"/>
+        <circle cx="15" cy="2" r="1.8" fill="#7d2455"/><circle cx="28" cy="8.5" r="1.8" fill="#7d2455"/>
+        <circle cx="28" cy="21.5" r="1.8" fill="#2d6070"/><circle cx="15" cy="28" r="1.8" fill="#2d6070"/>
+        <circle cx="2" cy="21.5" r="1.8" fill="#2d6070"/><circle cx="2" cy="8.5" r="1.8" fill="#7d2455"/>
       </svg>
       <span class="nav-logo-text">A R C O</span>
     </div>
@@ -216,12 +198,10 @@
       <li><a data-page="home">Home</a></li>
       <li><a class="active" data-page="publications">Publications</a></li>
       <li><a data-page="tutorials">Tutorials</a></li>
-      <li><a href="https://github.com" target="_blank" rel="noopener">Github</a></li>
+      <li><a href="https://github.com/GabrielaVidales/ARCO" target="_blank" rel="noopener">Github</a></li>
       <li><a data-page="about">About us</a></li>
     </ul>
-    <button class="nav-burger" aria-label="Menu" onclick="document.getElementById('nav-burger').click()">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-burger" aria-label="Menu" onclick="document.getElementById('nav-burger').click()"><span></span><span></span><span></span></button>
   </nav>
 
   <div class="section-header">
@@ -230,73 +210,44 @@
   </div>
 
   <div class="pubs-wrapper">
-
-    <div class="pub-group">
-      <div class="pub-group-title">
-        <span class="pub-dot"></span>
-        P A P E R S
-      </div>
+    <div>
+      <div class="pub-group-title"><span class="pub-dot"></span>P A P E R S</div>
       <div class="pub-list">
-        <div class="pub-item">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique velit a metus
-          egestas dapibus. Aenean rhoncus consectetur nunc ac sagittis. Sed vestibulum tristique
-          lacinia. In placerat purus eget lacus hendrerit.
-        </div>
-        <div class="pub-item">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique velit a metus
-          egestas dapibus. Aenean rhoncus consectetur nunc ac sagittis. Sed vestibulum tristique
-          lacinia. In placerat purus eget lacus hendrerit.
-        </div>
+        <div class="pub-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique velit a metus egestas dapibus. Aenean rhoncus consectetur nunc ac sagittis. Sed vestibulum tristique lacinia. In placerat purus eget lacus hendrerit.</div>
+        <div class="pub-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique velit a metus egestas dapibus. Aenean rhoncus consectetur nunc ac sagittis. Sed vestibulum tristique lacinia. In placerat purus eget lacus hendrerit.</div>
       </div>
     </div>
-
-    <div class="pub-group">
-      <div class="pub-group-title">
-        <span class="pub-dot steel"></span>
-        A R C O &nbsp; T H E S Y S
-      </div>
+    <div>
+      <div class="pub-group-title"><span class="pub-dot steel"></span>A R C O &nbsp; T H E S Y S</div>
       <div class="pub-list">
-        <div class="pub-item steel">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique velit a metus
-          egestas dapibus. Aenean rhoncus consectetur nunc ac sagittis. Sed vestibulum tristique
-          lacinia. In placerat purus eget lacus hendrerit.
-        </div>
+        <div class="pub-item steel">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique velit a metus egestas dapibus. Aenean rhoncus consectetur nunc ac sagittis. Sed vestibulum tristique lacinia. In placerat purus eget lacus hendrerit.</div>
       </div>
     </div>
-
   </div>
 
   <footer class="site-footer">
     <div class="footer-brand">
-      <svg viewBox="0 0 18 18" fill="none">
-        <polygon points="9,1 17,5 17,13 9,17 1,13 1,5" stroke="#0e2841" stroke-width="1.2" fill="none"/>
-        <polygon points="9,5 13,7 13,11 9,13 5,11 5,7" stroke="#993366" stroke-width=".8" fill="none"/>
-      </svg>
+      <svg viewBox="0 0 18 18" fill="none"><polygon points="9,1 17,5 17,13 9,17 1,13 1,5" stroke="#0a1f33" stroke-width="1.2" fill="none"/><polygon points="9,5 13,7 13,11 9,13 5,11 5,7" stroke="#7d2455" stroke-width=".8" fill="none"/></svg>
       A R C O
     </div>
     <span>© Copyright 2026</span>
     <span>Web design by Gabriela Vidales and Daniel Villanueva</span>
   </footer>
+</div>
 
-</div><!-- /#page-publications -->
 
-
-<!-- ═══════════════════════════════════════════════
-     PAGE: TUTORIALS
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     TUTORIALS
+═══════════════════════════════════════ -->
 <div class="page" id="page-tutorials">
-
   <nav class="site-nav">
     <div class="nav-logo" data-page="home">
-      <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none">
-        <polygon points="16,2 30,9 30,23 16,30 2,23 2,9" stroke="#0e2841" stroke-width="1.6" fill="none"/>
-        <polygon points="16,8 24,12.5 24,19.5 16,24 8,19.5 8,12.5" stroke="#993366" stroke-width="1.2" fill="none"/>
-        <circle cx="16" cy="2"  r="2" fill="#993366"/>
-        <circle cx="30" cy="9"  r="2" fill="#993366"/>
-        <circle cx="30" cy="23" r="2" fill="#467886"/>
-        <circle cx="16" cy="30" r="2" fill="#467886"/>
-        <circle cx="2"  cy="23" r="2" fill="#467886"/>
-        <circle cx="2"  cy="9"  r="2" fill="#993366"/>
+      <svg class="nav-logo-icon" viewBox="0 0 30 30" fill="none">
+        <polygon points="15,2 28,8.5 28,21.5 15,28 2,21.5 2,8.5" stroke="#0a1f33" stroke-width="1.5" fill="none"/>
+        <polygon points="15,7.5 22,11.5 22,18.5 15,22.5 8,18.5 8,11.5" stroke="#7d2455" stroke-width="1.1" fill="none"/>
+        <circle cx="15" cy="2" r="1.8" fill="#7d2455"/><circle cx="28" cy="8.5" r="1.8" fill="#7d2455"/>
+        <circle cx="28" cy="21.5" r="1.8" fill="#2d6070"/><circle cx="15" cy="28" r="1.8" fill="#2d6070"/>
+        <circle cx="2" cy="21.5" r="1.8" fill="#2d6070"/><circle cx="2" cy="8.5" r="1.8" fill="#7d2455"/>
       </svg>
       <span class="nav-logo-text">A R C O</span>
     </div>
@@ -304,12 +255,10 @@
       <li><a data-page="home">Home</a></li>
       <li><a data-page="publications">Publications</a></li>
       <li><a class="active" data-page="tutorials">Tutorials</a></li>
-      <li><a href="https://github.com" target="_blank" rel="noopener">Github</a></li>
+      <li><a href="https://github.com/GabrielaVidales/ARCO" target="_blank" rel="noopener">Github</a></li>
       <li><a data-page="about">About us</a></li>
     </ul>
-    <button class="nav-burger" aria-label="Menu" onclick="document.getElementById('nav-burger').click()">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-burger" aria-label="Menu" onclick="document.getElementById('nav-burger').click()"><span></span><span></span><span></span></button>
   </nav>
 
   <div class="section-header">
@@ -317,63 +266,54 @@
     <h2 class="section-title">Tutorials</h2>
   </div>
 
-  <div class="tuts-grid">
-
-    <div class="tut-card">
-      <div class="tut-thumb tut-thumb-rose">
-        <span class="tut-thumb-glyph">⚗️</span>
+  <div class="tuts-wrap">
+    <div class="tuts-grid">
+      <div class="tut-card">
+        <div class="tut-thumb tut-thumb-rose">
+          <span class="tut-glyph">⚗️</span>
+        </div>
+        <div class="tut-body">
+          <div class="tut-label">A R C O &nbsp; I R &nbsp; Tutorial</div>
+          <div class="tut-desc">Learn how to input IR spectral data and molecular formulas to elucidation candidate structures.</div>
+          <span class="tut-badge badge-rose">Spectroscopy</span>
+        </div>
       </div>
-      <div class="tut-body">
-        <div class="tut-label">A R C O &nbsp; I R &nbsp; Tutorial</div>
-        <div class="tut-desc">Learn how to input IR spectral data and molecular formulas to elucidation candidate structures.</div>
-        <span class="tut-badge badge-rose">Spectroscopy</span>
+      <div class="tut-card">
+        <div class="tut-thumb tut-thumb-steel">
+          <span class="tut-glyph">🧩</span>
+        </div>
+        <div class="tut-body">
+          <div class="tut-label">A R C O &nbsp; Fragments &nbsp; Tutorial</div>
+          <div class="tut-desc">Generate plausible molecular structures using fragment-based constraints and formula matching.</div>
+          <span class="tut-badge badge-steel">Structure generation</span>
+        </div>
       </div>
     </div>
-
-    <div class="tut-card">
-      <div class="tut-thumb tut-thumb-steel">
-        <span class="tut-thumb-glyph">🧩</span>
-      </div>
-      <div class="tut-body">
-        <div class="tut-label">A R C O &nbsp; Fragments &nbsp; Tutorial</div>
-        <div class="tut-desc">Generate plausible molecular structures using fragment-based constraints and formula matching.</div>
-        <span class="tut-badge badge-steel">Structure generation</span>
-      </div>
-    </div>
-
   </div>
 
   <footer class="site-footer">
     <div class="footer-brand">
-      <svg viewBox="0 0 18 18" fill="none">
-        <polygon points="9,1 17,5 17,13 9,17 1,13 1,5" stroke="#0e2841" stroke-width="1.2" fill="none"/>
-        <polygon points="9,5 13,7 13,11 9,13 5,11 5,7" stroke="#993366" stroke-width=".8" fill="none"/>
-      </svg>
+      <svg viewBox="0 0 18 18" fill="none"><polygon points="9,1 17,5 17,13 9,17 1,13 1,5" stroke="#0a1f33" stroke-width="1.2" fill="none"/><polygon points="9,5 13,7 13,11 9,13 5,11 5,7" stroke="#7d2455" stroke-width=".8" fill="none"/></svg>
       A R C O
     </div>
     <span>© Copyright 2026</span>
     <span>Web design by Gabriela Vidales and Daniel Villanueva</span>
   </footer>
+</div>
 
-</div><!-- /#page-tutorials -->
 
-
-<!-- ═══════════════════════════════════════════════
-     PAGE: ABOUT
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════ -->
 <div class="page" id="page-about">
-
   <nav class="site-nav">
     <div class="nav-logo" data-page="home">
-      <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none">
-        <polygon points="16,2 30,9 30,23 16,30 2,23 2,9" stroke="#0e2841" stroke-width="1.6" fill="none"/>
-        <polygon points="16,8 24,12.5 24,19.5 16,24 8,19.5 8,12.5" stroke="#993366" stroke-width="1.2" fill="none"/>
-        <circle cx="16" cy="2"  r="2" fill="#993366"/>
-        <circle cx="30" cy="9"  r="2" fill="#993366"/>
-        <circle cx="30" cy="23" r="2" fill="#467886"/>
-        <circle cx="16" cy="30" r="2" fill="#467886"/>
-        <circle cx="2"  cy="23" r="2" fill="#467886"/>
-        <circle cx="2"  cy="9"  r="2" fill="#993366"/>
+      <svg class="nav-logo-icon" viewBox="0 0 30 30" fill="none">
+        <polygon points="15,2 28,8.5 28,21.5 15,28 2,21.5 2,8.5" stroke="#0a1f33" stroke-width="1.5" fill="none"/>
+        <polygon points="15,7.5 22,11.5 22,18.5 15,22.5 8,18.5 8,11.5" stroke="#7d2455" stroke-width="1.1" fill="none"/>
+        <circle cx="15" cy="2" r="1.8" fill="#7d2455"/><circle cx="28" cy="8.5" r="1.8" fill="#7d2455"/>
+        <circle cx="28" cy="21.5" r="1.8" fill="#2d6070"/><circle cx="15" cy="28" r="1.8" fill="#2d6070"/>
+        <circle cx="2" cy="21.5" r="1.8" fill="#2d6070"/><circle cx="2" cy="8.5" r="1.8" fill="#7d2455"/>
       </svg>
       <span class="nav-logo-text">A R C O</span>
     </div>
@@ -381,12 +321,10 @@
       <li><a data-page="home">Home</a></li>
       <li><a data-page="publications">Publications</a></li>
       <li><a data-page="tutorials">Tutorials</a></li>
-      <li><a href="https://github.com" target="_blank" rel="noopener">Github</a></li>
+      <li><a href="https://github.com/GabrielaVidales/ARCO" target="_blank" rel="noopener">Github</a></li>
       <li><a class="active" data-page="about">About us</a></li>
     </ul>
-    <button class="nav-burger" aria-label="Menu" onclick="document.getElementById('nav-burger').click()">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-burger" aria-label="Menu" onclick="document.getElementById('nav-burger').click()"><span></span><span></span><span></span></button>
   </nav>
 
   <div class="section-header">
@@ -395,7 +333,6 @@
   </div>
 
   <div class="about-wrapper">
-
     <div class="team-card">
       <div class="team-avatar av-1">🧑‍🔬</div>
       <div class="team-info">
@@ -403,7 +340,6 @@
         <p class="team-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique velit a metus egestas dapibus. Aenean rhoncus consectetur nunc ac sagittis. Sed vestibulum tristique lacinia. In placerat purus eget lacus hendrerit.</p>
       </div>
     </div>
-
     <div class="team-card">
       <div class="team-avatar av-2">👨‍💻</div>
       <div class="team-info">
@@ -411,7 +347,6 @@
         <p class="team-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique velit a metus egestas dapibus. Aenean rhoncus consectetur nunc ac sagittis. Sed vestibulum tristique lacinia. In placerat purus eget lacus hendrerit.</p>
       </div>
     </div>
-
     <div class="team-card">
       <div class="team-avatar av-3">👩‍🔬</div>
       <div class="team-info">
@@ -419,7 +354,6 @@
         <p class="team-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique velit a metus egestas dapibus. Aenean rhoncus consectetur nunc ac sagittis. Sed vestibulum tristique lacinia. In placerat purus eget lacus hendrerit.</p>
       </div>
     </div>
-
     <div class="team-card">
       <div class="team-avatar av-4">👩‍🎨</div>
       <div class="team-info">
@@ -427,7 +361,6 @@
         <p class="team-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique velit a metus egestas dapibus. Aenean rhoncus consectetur nunc ac sagittis. Sed vestibulum tristique lacinia. In placerat purus eget lacus hendrerit.</p>
       </div>
     </div>
-
     <div class="team-card">
       <div class="team-avatar av-5">🧪</div>
       <div class="team-info">
@@ -435,23 +368,17 @@
         <p class="team-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique velit a metus egestas dapibus. Aenean rhoncus consectetur nunc ac sagittis. Sed vestibulum tristique lacinia. In placerat purus eget lacus hendrerit.</p>
       </div>
     </div>
-
   </div>
 
   <footer class="site-footer">
     <div class="footer-brand">
-      <svg viewBox="0 0 18 18" fill="none">
-        <polygon points="9,1 17,5 17,13 9,17 1,13 1,5" stroke="#0e2841" stroke-width="1.2" fill="none"/>
-        <polygon points="9,5 13,7 13,11 9,13 5,11 5,7" stroke="#993366" stroke-width=".8" fill="none"/>
-      </svg>
+      <svg viewBox="0 0 18 18" fill="none"><polygon points="9,1 17,5 17,13 9,17 1,13 1,5" stroke="#0a1f33" stroke-width="1.2" fill="none"/><polygon points="9,5 13,7 13,11 9,13 5,11 5,7" stroke="#7d2455" stroke-width=".8" fill="none"/></svg>
       A R C O
     </div>
     <span>© Copyright 2026</span>
     <span>Web design by Gabriela Vidales and Daniel Villanueva</span>
   </footer>
-
-</div><!-- /#page-about -->
-
+</div>
 
 <script src="main.js"></script>
 </body>
